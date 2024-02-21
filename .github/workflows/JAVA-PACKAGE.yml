@@ -1,0 +1,25 @@
+name: Maven Package Publish to GitHub Packages
+
+on:
+  push:
+    branches:
+      - main
+
+env:
+  JAVA_VERSION: 8
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Set up JDK ${{ env.JAVA_VERSION }}
+        uses: actions/setup-java@v4
+        with:
+          java-version: ${{ env.JAVA_VERSION }}
+          distribution: 'temurin'
+      - name: Build with Maven
+        run: mvn -B -DskipTests clean package
+      - name: Publish Maven Artifacts
+        run: mvn deploy --settings settings.xml
