@@ -26,7 +26,7 @@ jobs:
       - name: Build with Maven
         run: mvn -B -DskipTests clean package
       - name: Publish Maven Artifacts
-        run: mvn deploy --settings settings.xml
+        run: mvn --batch-mode deploy --settings settings.xml
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           GITHUB_USERNAME: ${{ github.actor }}
