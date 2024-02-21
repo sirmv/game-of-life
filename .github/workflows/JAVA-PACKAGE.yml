@@ -34,6 +34,9 @@ jobs:
           
       - name: Build with Maven
         run: mvn -B -DskipTests clean install
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        
         
       - name: Publish to GitHub Packages Apache Maven
         if: github.event_name == 'release'
