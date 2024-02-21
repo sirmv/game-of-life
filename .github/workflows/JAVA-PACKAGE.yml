@@ -8,6 +8,10 @@ on:
 env:
   JAVA_VERSION: 8
 
+permissions:
+  contents: read
+  packages: write  
+
 jobs:
   build:
     runs-on: ubuntu-latest
