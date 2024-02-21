@@ -6,7 +6,7 @@ on:
       - main
 
 env:
-  JAVA_VERSION: 11
+  JAVA_VERSION: 8
 
 permissions:
   contents: read
@@ -24,7 +24,7 @@ jobs:
           java-version: ${{ env.JAVA_VERSION }}
           distribution: 'temurin'
       - name: Build with Maven
-        run: mvn build -DskipTests clean package
+        run: mvn -DskipTests clean package
       - name: Publish Maven Artifacts
         run: mvn --batch-mode deploy --settings settings.xml
         env:
